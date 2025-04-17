@@ -8,6 +8,7 @@ export const bugsService = {
 }
 
 const bugs = readJsonFile("./data/bugs.json")
+const bugLabels = ["critical", "need-CR", "dev-branch"]
 
 async function query(filterBy) {
     let bugsToDisplay = bugs
@@ -49,6 +50,7 @@ async function remove(bugId) {
 
 async function save(bugToSave) {
     try {
+        if (!bugToSave.labels) bugToSave.labels = [pickLabel()]
         if (bugToSave._id) {
             const bugIdx = bugs.findIndex(bug => bug._id === bugToSave._id)
             if (bugIdx === -1) throw Error("Cant find bug")
@@ -63,6 +65,11 @@ async function save(bugToSave) {
 
     }
 }
+
+function pickLabel() {
+    return bugLabels[Math.floor(Math.random() * bugLabels.length)]
+}
+
 
 function saveBugsToFile() {
     return writeJsonFile("./data/bugs.json", bugs)

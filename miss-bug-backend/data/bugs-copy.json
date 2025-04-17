@@ -4,34 +4,39 @@
         "title": "Cannot save a Car",
         "description": "bug description", 
         "severity": 5,
-        "createdAt": 1542107359454
+        "createdAt": 1542107359454,
+        "labels" : ["critical", "need-CR", "dev-branch"]
     },
     {
         "_id": "b2",
         "title": "Cannot remove a Car",
         "description": "bug description", 
         "severity": 2,
-        "createdAt": 1542107359454
+        "createdAt": 1542107359454,
+        "labels" : ["critical", "need-CR"]
     },
     {
         "_id": "b3",
         "title": "Cannot find a Car",
         "description": "bug description", 
         "severity": 3,
-        "createdAt": 1542107359454
+        "createdAt": 1542107359454,
+        "labels" : ["critical", "dev-branch"]
     },
     {
         "_id": "b4",
         "title": "Cannot save a Car",
         "description": "bug description", 
         "severity": 1,
-        "createdAt": 1542107359454
+        "createdAt": 1542107359454,
+        "labels" : ["need-CR", "dev-branch"]
     },
     {
         "_id": "b5",
         "title": "Cannot save a Car",
         "description": "bug description", 
         "severity": 4,
-        "createdAt": 1542107359454
+        "createdAt": 1542107359454,
+        "labels" : ["critical", "need-CR", "dev-branch"]
     }
 ]
