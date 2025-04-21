@@ -1,13 +1,24 @@
 [
     {
-        "_id": "b1",
         "title": "Cannot save a Car",
         "description": "bug description",
-        "severity": 5,
+        "severity": 4,
         "createdAt": 1542107359454,
         "labels": [
             "critical",
             "need-CR",
+            "dev-branch"
+        ],
+        "_id": "yUesJz"
+    },
+    {
+        "_id": "b1",
+        "title": "Cannot save a Car",
+        "description": "bug description",
+        "severity": 3,
+        "createdAt": 1542107359454,
+        "labels": [
+            "critical",
             "dev-branch"
         ]
     },
@@ -40,18 +51,6 @@
         "severity": 1,
         "createdAt": 1542107359454,
         "labels": [
-            "need-CR",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "b5",
-        "title": "Cannot save a Car",
-        "description": "bug description",
-        "severity": 4,
-        "createdAt": 1542107359454,
-        "labels": [
-            "critical",
             "need-CR",
             "dev-branch"
         ]

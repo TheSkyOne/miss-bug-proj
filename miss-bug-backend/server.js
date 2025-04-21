@@ -14,13 +14,13 @@ const corsOptions = {
     credentials: true
 }
 app.use(cors(corsOptions))
-
 app.use(express.static("public"))
+app.use(express.json())
 
 
 //* bugs crudl
+
 app.get('/api/bug', async (req, res) => {
-    console.log(req.query)
     const filterBy = {
         title: req.query.title,
         severity: +req.query.severity
@@ -31,23 +31,6 @@ app.get('/api/bug', async (req, res) => {
     } catch (err) {
         console.log("err: ", err)
         res.status(400).send("couldn't get bugs")
-    }
-})
-
-app.get('/api/bug/save', async (req, res) => {
-    const bugToSave = {
-        _id: req.query._id,
-        title: req.query.title,
-        description: req.query.description,
-        severity: +req.query.severity,
-        createdAt: +req.query.createdAt
-    }
-    try {
-        const savedBug = await bugsService.save(bugToSave)
-        res.send(savedBug)
-    } catch (err) {
-        console.log("err: ", err)
-        res.status(400).send("couldn't save bug")
     }
 })
 
@@ -62,7 +45,42 @@ app.get('/api/bug/:bugId', async (req, res) => {
     }
 })
 
-app.get('/api/bug/:bugId/remove', async (req, res) => {
+app.put('/api/bug/:bugId', async (req, res) => {
+    const bugToSave = {
+        _id: req.body._id,
+        title: req.body.title,
+        description: req.body.description,
+        severity: +req.body.severity,
+        createdAt: +req.body.createdAt,
+        labels: req.body.labels
+    }
+    try {
+        const savedBug = await bugsService.save(bugToSave)
+        res.send(savedBug)
+    } catch (err) {
+        console.log("err: ", err)
+        res.status(400).send("couldn't update bug")
+    }
+})
+
+app.post('/api/bug', async (req, res) => {
+    const bugToSave = {
+        title: req.body.title,
+        description: req.body.description,
+        severity: +req.body.severity,
+        createdAt: +req.body.createdAt,
+        labels: req.body.labels
+    }
+    try {
+        const savedBug = await bugsService.save(bugToSave)
+        res.send(savedBug)
+    } catch (err) {
+        console.log("err: ", err)
+        res.status(400).send("couldn't save bug")
+    }
+})
+
+app.delete('/api/bug/:bugId', async (req, res) => {
     const { bugId } = req.params
     try {
         await bugsService.remove(bugId)
@@ -71,10 +89,4 @@ app.get('/api/bug/:bugId/remove', async (req, res) => {
         console.log(err)
         res.status(400).send("couldnt remove bug")
     }
-})
-
-
-app.get("/", (req, res) => {
-    res.send("Welcome!")
-
 })
