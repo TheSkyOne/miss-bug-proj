@@ -39,6 +39,7 @@ async function getById(bugId) {
 async function remove(bugId) {
     try {
         const { data: bug } = await axios.get(BASE_URL + bugId + "/remove")
+        return bug
     } catch (err) {
         console.log(err)
         throw err
@@ -56,5 +57,5 @@ async function save(bug) {
 }
 
 function getDefaultFilter() {
-    return { title: "", severity: ""}
+    return { title: "", severity: "", labels: []}
 }

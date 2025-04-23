@@ -18,8 +18,7 @@
         "severity": 3,
         "createdAt": 1542107359454,
         "labels": [
-            "critical",
-            "dev-branch"
+            "critical"
         ]
     },
     {

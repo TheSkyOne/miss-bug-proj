@@ -7,6 +7,7 @@ export const bugsService = {
     save
 }
 
+const PAGE_SIZE = 2
 const bugs = readJsonFile("./data/bugs.json")
 const bugLabels = ["critical", "need-CR", "dev-branch"]
 
@@ -19,9 +20,24 @@ async function query(filterBy) {
         }
 
         if (filterBy.severity) {
-            bugsToDisplay = bugsToDisplay.filter(bug => bug.severity <= filterBy.severity)
+            bugsToDisplay = bugsToDisplay.filter(bug => bug.severity >= filterBy.severity)
         }
+
+        if (filterBy.labels) {
+            bugsToDisplay = bugsToDisplay.filter(bug => 
+                bug.labels.some(label => 
+                    filterBy.labels.includes(label)
+                )
+            )
+        }
+
+        if (filterBy.pageIdx || filterBy.pageIdx === 0){
+            const startIdx = filterBy.pageIdx * PAGE_SIZE
+            bugsToDisplay = bugsToDisplay.slice(startIdx, startIdx + PAGE_SIZE)
+        }
+
         return bugsToDisplay
+        
     } catch (err) {
         throw err
     }

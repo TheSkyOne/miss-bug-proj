@@ -23,8 +23,11 @@ app.use(express.json())
 app.get('/api/bug', async (req, res) => {
     const filterBy = {
         title: req.query.title,
-        severity: +req.query.severity
+        severity: +req.query.severity,
+        labels: req.query['labels[]'] || req.query.labels,
+        pageIdx: +req.query.pageIdx
     }
+
     try {
         const bugs = await bugsService.query(filterBy)
         res.send(bugs)
