@@ -1,9 +1,5 @@
-
-import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
 import axios from 'axios'
 
-const STORAGE_KEY = 'bugDB'
 const BASE_URL = "http://127.0.0.1:3030/api/bug/"
 
 export const bugService = {
@@ -38,7 +34,7 @@ async function getById(bugId) {
 
 async function remove(bugId) {
     try {
-        const { data: bug } = await axios.get(BASE_URL + bugId + "/remove")
+        const { data: bug } = await axios.delete(BASE_URL + bugId)
         return bug
     } catch (err) {
         console.log(err)
@@ -47,9 +43,11 @@ async function remove(bugId) {
 }
 
 async function save(bug) {
+    const method = bug._id ? "put" : "post"
+
     try {
-        const savedBug = await axios.get(BASE_URL + "save", { params: bug })
-        return savedBug.data
+        const {data: savedBug} = await axios[method](BASE_URL + (bug._id || ""), bug)
+        return savedBug
     } catch (err) {
         console.log(err)
         throw err

@@ -1,5 +1,15 @@
 [
     {
+        "_id": "UjhgAt",
+        "title": "bug",
+        "description": "new",
+        "severity": 3,
+        "createdAt": 1745705829685,
+        "labels": [
+            "critical"
+        ]
+    },
+    {
         "title": "Cannot save a Car",
         "description": "bug description",
         "severity": 4,
@@ -40,17 +50,6 @@
         "createdAt": 1542107359454,
         "labels": [
             "critical",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "b4",
-        "title": "Cannot save a Car",
-        "description": "bug description",
-        "severity": 1,
-        "createdAt": 1542107359454,
-        "labels": [
-            "need-CR",
             "dev-branch"
         ]
     }
