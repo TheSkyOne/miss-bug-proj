@@ -30,7 +30,7 @@ export async function getBug(req, res) {
 
 export async function updateBug(req, res) {
     const bugToSave = {
-        _id: req.body._id,
+        _id: req.body._id || req.params.bugId,
         title: req.body.title,
         description: req.body.description,
         severity: +req.body.severity,
