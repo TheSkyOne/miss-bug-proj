@@ -21,3 +21,7 @@ app.use(express.json())
 
 app.use("/api/bug", bugRoutes)
 app.use("/api/user", userRoutes)
+
+app.get('/**', (req, res) => {
+	res.sendFile(path.resolve('public/index.html'))
+})
