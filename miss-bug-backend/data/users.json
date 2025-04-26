@@ -1,0 +1,30 @@
+[
+    {
+        "_id": "Jeqhbe",
+        "fullname": "Postman User",
+        "username": "postman",
+        "password": "postman1234",
+        "score": 300
+    },
+    {
+        "_id": "u101",
+        "fullname": "Admin Adminov",
+        "username": "admin",
+        "password": "securepass",
+        "score": 9999
+    },
+    {
+        "_id": "u102",
+        "fullname": "Muki Ja",
+        "username": "muki",
+        "password": "muki1234",
+        "score": 100
+    },
+    {
+        "_id": "u103",
+        "fullname": "Puki Ma",
+        "username": "puki",
+        "password": "puki1234",
+        "score": 200
+    }
+]
