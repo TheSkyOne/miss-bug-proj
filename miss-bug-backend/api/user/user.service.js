@@ -4,7 +4,8 @@ export const userService = {
     query,
     getById,
     remove,
-    save
+    save,
+    getByUsername
 }
 
 const users = readJsonFile("./data/users.json")
@@ -55,6 +56,10 @@ async function save(userToSave) {
     } catch (error) {
 
     }
+}
+
+function getByUsername(username) {
+    return users.find(user => user.username === username)
 }
 
 function saveUsersToFile() {
