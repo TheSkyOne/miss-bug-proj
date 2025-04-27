@@ -1,6 +1,6 @@
 import Cryptr from 'cryptr'
 import bcrypt from 'bcrypt'
-import { userService } from "../user/user.service"
+import { userService } from "../user/user.service.js"
 
 const cryptr = new Cryptr(process.env.SECRET1 || "super-secret-password")
 
@@ -19,21 +19,22 @@ function getLoginToken(user) {
 async function signup({ username, password, fullname }) {
     const saltRounds = 10
 
-    if (!username || !password || !fullname) throw 'Missing required signup information'
+    if (!username || !password || !fullname) throw Error("Missing required signup information")
 
     const userExists = await userService.getByUsername(username)
-    if (userExists) throw 'Username already taken'
+    console.log(userExists)
+    if (userExists) throw Error("Username already taken")
 
     const hash = await bcrypt.hash(password, saltRounds)
     return userService.save({ username, password: hash, fullname })
 }
 
 async function login(username, password) {
-    var userExists = await userService.getByUsername(username)
-    if (!userExists) throw 'Unkown username'
+    var user = await userService.getByUsername(username)
+    if (!user) throw Error("Unkown username")
 
-    const match = await bcrypt.compare(password, user.password)
-    if (!match) throw 'Invalid username or password'
+    // const match = await bcrypt.compare(password, user.password)
+    // if (!match) throw Error('Invalid username or password')
 
     const miniUser = {
         _id: user._id,

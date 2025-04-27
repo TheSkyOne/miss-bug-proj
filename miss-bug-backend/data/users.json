@@ -3,27 +3,44 @@
         "fullname": "New User",
         "username": "newuser",
         "password": "newuser1234",
-        "_id": "dbQAHm"
+        "_id": "dbQAHm",
+        "createdAt": 1745794863711,
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
     },
     {
         "_id": "u101",
         "fullname": "Admin Adminov",
         "username": "admin",
         "password": "securepass",
-        "score": 9999
+        "score": 9999,
+        "createdAt": 1745794863711,
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
     },
     {
         "_id": "u102",
         "fullname": "Muki Ja",
         "username": "muki",
         "password": "muki1234",
-        "score": 100
+        "score": 100,
+        "createdAt": 1745794863711,
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
     },
     {
         "_id": "u103",
         "fullname": "Puki Ma",
         "username": "puki",
         "password": "puki1234",
-        "score": 200
+        "score": 200,
+        "createdAt": 1745794863711,
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+    },
+    {
+        "username": "myuser",
+        "password": "$2b$10$5Y/khIsbC8ODp3XHFfUa0.tZB1lAEFAeLukWxpISuWfAPx6z8eyom",
+        "fullname": "New User",
+        "_id": "C0x4VR",
+        "score": 100,
+        "createdAt": 1745795213119,
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
     }
 ]

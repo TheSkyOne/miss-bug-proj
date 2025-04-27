@@ -19,8 +19,6 @@ export async function userLogin(req, res) {
         const user = await authService.login(username, password)
         const loginToken = authService.getLoginToken(user)
         res.cookie("loginToken", loginToken, { sameSite: "None", secure: true })
-        console.log("🚀 ~ login ~ loginToken:", loginToken)
-        console.log("🚀 ~ login ~ user:", user)
         res.json(user)
     } catch (err) {
         res.status(401).send({ err: "Failed to Login" })
