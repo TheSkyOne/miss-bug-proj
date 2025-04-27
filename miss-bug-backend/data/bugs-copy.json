@@ -1,42 +1,76 @@
 [
     {
+        "_id": "UjhgAt",
+        "title": "bug",
+        "description": "new",
+        "severity": 3,
+        "createdAt": 1745705829685,
+        "labels": [
+            "critical"
+        ],
+        "creator": {
+            "_id": "u102",
+            "fullname": "Muki Ja"
+        }
+    },
+    {
+        "title": "Cannot save a Car",
+        "description": "bug description",
+        "severity": 4,
+        "createdAt": 1542107359454,
+        "labels": [
+            "critical",
+            "need-CR",
+            "dev-branch"
+        ],
+        "_id": "yUesJz",
+        "creator": {
+            "_id": "u102",
+            "fullname": "Muki Ja"
+        }
+    },
+    {
         "_id": "b1",
         "title": "Cannot save a Car",
-        "description": "bug description", 
-        "severity": 5,
+        "description": "bug description",
+        "severity": 3,
         "createdAt": 1542107359454,
-        "labels" : ["critical", "need-CR", "dev-branch"]
+        "labels": [
+            "critical"
+        ],
+        "creator": {
+            "_id": "u103",
+            "fullname": "Puki Ma"
+        }
     },
     {
         "_id": "b2",
         "title": "Cannot remove a Car",
-        "description": "bug description", 
+        "description": "bug description",
         "severity": 2,
         "createdAt": 1542107359454,
-        "labels" : ["critical", "need-CR"]
+        "labels": [
+            "critical",
+            "need-CR"
+        ],
+        "creator": {
+            "_id": "u103",
+            "fullname": "Puki Ma"
+        }
     },
     {
         "_id": "b3",
         "title": "Cannot find a Car",
-        "description": "bug description", 
+        "description": "bug description",
         "severity": 3,
         "createdAt": 1542107359454,
-        "labels" : ["critical", "dev-branch"]
-    },
-    {
-        "_id": "b4",
-        "title": "Cannot save a Car",
-        "description": "bug description", 
-        "severity": 1,
-        "createdAt": 1542107359454,
-        "labels" : ["need-CR", "dev-branch"]
-    },
-    {
-        "_id": "b5",
-        "title": "Cannot save a Car",
-        "description": "bug description", 
-        "severity": 4,
-        "createdAt": 1542107359454,
-        "labels" : ["critical", "need-CR", "dev-branch"]
+        "labels": [
+            "critical",
+            "dev-branch"
+        ],
+        "creator": {
+            "_id": "u103",
+            "fullname": "Puki Ma"
+        }
     }
 ]
