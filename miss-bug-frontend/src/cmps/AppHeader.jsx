@@ -13,8 +13,8 @@ export function AppHeader() {
             <div className='header-container'>
                 <h1>Bugs are Forever</h1>
                 <nav className='app-nav'>
-                    <NavLink to="/">Home</NavLink> |<NavLink to="/bug">Bugs</NavLink> |
-                    <NavLink to="/about">About</NavLink>
+                    <NavLink to="/">Home</NavLink> | <NavLink to="/bug">Bugs</NavLink> |
+                    <NavLink to="/user">Users</NavLink> | <NavLink to="/about">About</NavLink>
                 </nav>
             </div>
             <UserMsg />
