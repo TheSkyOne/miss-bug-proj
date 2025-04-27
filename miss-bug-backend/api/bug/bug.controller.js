@@ -18,8 +18,15 @@ export async function getBugs(req, res) {
 }
 
 export async function getBug(req, res) {
+    let visitedBugs = req.cookies.visitedBugs || []
     const { bugId } = req.params
     try {
+        if (visitedBugs.length >= 3) return res.status(401).send("Wait for a bit")
+        if (!visitedBugs.includes(bugId)) {
+            visitedBugs.push(bugId)
+            res.cookie("visitedBugs", visitedBugs, { maxAge: 1000 * 7 })
+        }
+        
         const bug = await bugsService.getById(bugId)
         res.send(bug)
     } catch (err) {

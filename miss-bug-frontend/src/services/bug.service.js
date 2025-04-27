@@ -1,4 +1,6 @@
-import axios from 'axios'
+import Axios from 'axios'
+
+const axios = Axios.create({ withCredentials: true })
 
 const BASE_URL = "http://127.0.0.1:3030/api/bug/"
 
