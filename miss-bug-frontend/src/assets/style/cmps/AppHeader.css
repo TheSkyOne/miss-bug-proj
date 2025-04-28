@@ -7,12 +7,10 @@
 .header-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
 }
 
-.header-container h1 {
-    flex-grow: 1;
-}
 
 .app-nav {
     display: flex;

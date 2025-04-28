@@ -1,7 +1,6 @@
 import { UserPreview } from "./UserPreview"
 
 export function UserList({ users, onRemoveUser, onEditUser }) {
-    console.log(users)
     return (
         <ul className="user-list">
             {users.map(user => (
