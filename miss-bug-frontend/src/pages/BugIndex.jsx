@@ -4,6 +4,7 @@ import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
 import { BugFilter } from '../cmps/BugFilter.jsx'
+import { userService } from '../services/user.service.js'
 
 
 export function BugIndex() {
@@ -33,11 +34,16 @@ export function BugIndex() {
     }
 
     async function onAddBug() {
+        const loggedInUser = userService.getLoggedinUser()
         const bug = {
             title: prompt('Bug title?'),
             description: prompt('Bug description:') || "default description",
             severity: +prompt('Bug severity?'),
-            createdAt: Date.now()
+            createdAt: Date.now(),
+            creator: {
+                _id: loggedInUser?._id || "",
+                fullname: loggedInUser?.fullname || "all"
+            }
         }
         try {
             const savedBug = await bugService.save(bug)

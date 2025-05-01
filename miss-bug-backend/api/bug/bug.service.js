@@ -77,8 +77,9 @@ async function save(bugToSave) {
         }
         await saveBugsToFile()
         return bugToSave
-    } catch (error) {
-
+    } catch (err) {
+        console.log("error saving bug, err:", err)
+        throw err
     }
 }
 

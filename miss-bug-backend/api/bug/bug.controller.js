@@ -42,7 +42,8 @@ export async function updateBug(req, res) {
         description: req.body.description,
         severity: +req.body.severity,
         createdAt: +req.body.createdAt,
-        labels: req.body.labels
+        labels: req.body.labels,
+        creator: req.body.creator
     }
     try {
         const savedBug = await bugsService.save(bugToSave)
@@ -59,7 +60,8 @@ export async function addBug(req, res) {
         description: req.body.description,
         severity: +req.body.severity,
         createdAt: +req.body.createdAt,
-        labels: req.body.labels
+        labels: req.body.labels,
+        creator: req.body.creator
     }
     try {
         const savedBug = await bugsService.save(bugToSave)
