@@ -58,6 +58,7 @@ export function AppHeader() {
                     <NavLink to="/about">About</NavLink>
                     <NavLink to="/bug">Bugs</NavLink>
                     <NavLink to="/user">Users</NavLink>
+                    <NavLink to="/profile">Profile</NavLink>
                 </nav>
             </section>
             <UserMsg />

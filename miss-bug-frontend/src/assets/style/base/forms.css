@@ -1,4 +1,4 @@
-button {
+button, .link {
     cursor: pointer;
     background-color: var(--clr2bg);
     margin: 0.5em;
@@ -7,7 +7,7 @@ button {
     border-radius: 4px;
 }
 
-button:hover {
+button:hover, .link:hover {
     background-color: var(--clr2);
     color: white;
     transition: 0.3s;
