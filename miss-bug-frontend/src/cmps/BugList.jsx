@@ -11,7 +11,7 @@ export function BugList({ bugs, onRemoveBug, onEditBug }) {
                     <div>
                         <button
                             onClick={() => {
-                                onRemoveBug(bug._id)
+                                onRemoveBug(bug._id, bug.creator._id)
                             }}
                         >
                             x

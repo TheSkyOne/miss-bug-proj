@@ -1,47 +1,5 @@
 [
     {
-        "title": "without log-in",
-        "description": "this bug was created with no user logged in",
-        "severity": 3,
-        "createdAt": 1746137871796,
-        "labels": [
-            "dev-branch"
-        ],
-        "creator": {
-            "_id": "",
-            "fullname": "all"
-        },
-        "_id": "P0iiAE"
-    },
-    {
-        "title": "Muki's bug",
-        "description": "bug by muki!",
-        "severity": 5,
-        "createdAt": 1746137787358,
-        "labels": [
-            "need-CR"
-        ],
-        "creator": {
-            "_id": "u102",
-            "fullname": "Muki Ja"
-        },
-        "_id": "n4LfmB"
-    },
-    {
-        "title": "admin bug",
-        "description": "bug by admin adminov",
-        "severity": 1,
-        "createdAt": 1746137744803,
-        "labels": [
-            "critical"
-        ],
-        "creator": {
-            "_id": "u101",
-            "fullname": "Admin Adminov"
-        },
-        "_id": "PEJ645"
-    },
-    {
         "_id": "UjhgAt",
         "title": "bug",
         "description": "new",
