@@ -1,4 +1,6 @@
-import axios from 'axios'
+import Axios from 'axios'
+
+const axios = Axios.create({ withCredentials: true })
 
 const STORAGE_KEY_LOGGEDIN_USER = "loggedinUser"
 
