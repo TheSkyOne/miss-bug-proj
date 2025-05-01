@@ -1,5 +1,19 @@
 [
     {
+        "title": "Admin's bug",
+        "description": "bug made by admin adminov",
+        "severity": 1,
+        "createdAt": 1746142198261,
+        "labels": [
+            "critical"
+        ],
+        "creator": {
+            "_id": "u101",
+            "fullname": "Admin Adminov"
+        },
+        "_id": "nt8MtO"
+    },
+    {
         "_id": "UjhgAt",
         "title": "bug",
         "description": "new",

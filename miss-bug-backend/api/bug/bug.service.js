@@ -31,6 +31,10 @@ async function query(filterBy) {
             )
         }
 
+        if (filterBy.creator) {
+            bugsToDisplay = bugsToDisplay.filter(bug => bug.creator._id === filterBy.creator._id)
+        }
+
         if (filterBy.pageIdx || filterBy.pageIdx === 0){
             const startIdx = filterBy.pageIdx * PAGE_SIZE
             bugsToDisplay = bugsToDisplay.slice(startIdx, startIdx + PAGE_SIZE)

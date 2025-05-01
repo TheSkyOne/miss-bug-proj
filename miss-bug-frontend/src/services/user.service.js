@@ -73,7 +73,6 @@ async function signup(credentials) {
 
 async function login(credentials) {
     const { data: user } = await axios.post(BASE_AUTH_URL + "login", credentials)
-    console.log("user", user);
     if (user) {
         return saveLocalUser(user)
     }

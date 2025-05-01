@@ -5,7 +5,8 @@ export async function getBugs(req, res) {
         title: req.query.title,
         severity: +req.query.severity,
         labels: req.query['labels[]'] || req.query.labels,
-        pageIdx: +req.query.pageIdx
+        pageIdx: +req.query.pageIdx,
+        creator: req.query.creator
     }
 
     try {
