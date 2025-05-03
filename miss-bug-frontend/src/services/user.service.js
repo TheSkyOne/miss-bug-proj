@@ -19,7 +19,8 @@ export const userService = {
     getDefaultFilter,
     getUsers,
     getLoggedinUser,
-    getEmptyUser
+    getEmptyUser,
+    isLoggedinUserAdmin
 }
 
 
@@ -68,13 +69,13 @@ async function save(user) {
 
 async function signup(credentials) {
     const { data: user } = await axios.post(BASE_AUTH_URL + "signup", credentials)
-    return saveLocalUser(user)
+    return _saveLocalUser(user)
 }
 
 async function login(credentials) {
     const { data: user } = await axios.post(BASE_AUTH_URL + "login", credentials)
     if (user) {
-        return saveLocalUser(user)
+        return _saveLocalUser(user)
     }
 }
 
@@ -106,12 +107,17 @@ function getEmptyUser() {
     }
 }
 
-function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname }
+function _saveLocalUser(user) {
+    user = { _id: user._id, fullname: user.fullname, isAdmin: user.isAdmin}
+
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
 
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
+
+function isLoggedinUserAdmin() {
+    return getLoggedinUser()?.isAdmin
 }

@@ -36,6 +36,11 @@ export function UserIndex() {
     }
 
     async function onRemoveUser(userId) {
+        if (!userService.isLoggedinUserAdmin()) {
+            showErrorMsg("You must be an admin to do this action")
+            return
+        }
+
         const confirmRemove = confirm("are you sure you want to remove this user?")
         if (!confirmRemove) return
 
@@ -50,6 +55,11 @@ export function UserIndex() {
     }
 
     async function onEditUser(user) {
+        if (!userService.isLoggedinUserAdmin()) {
+            showErrorMsg("You must be an admin to do this action")
+            return
+        }
+
         const fullname = prompt("enter new full name")
         const userToSave = { ...user, fullname }
         try {

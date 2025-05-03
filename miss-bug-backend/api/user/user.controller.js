@@ -1,12 +1,7 @@
 import { userService } from "./user.service.js"
 
 export async function getUsers(req, res) {
-    const filterBy = {
-        // title: req.query.title,
-        // severity: +req.query.severity,
-        // labels: req.query['labels[]'] || req.query.labels,
-        // pageIdx: +req.query.pageIdx
-    }
+    const filterBy = {}
 
     try {
         const users = await userService.query(filterBy)

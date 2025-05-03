@@ -14,7 +14,8 @@
         "password": "securepass",
         "score": 9999,
         "createdAt": 1745794863711,
-        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+        "isAdmin": true
     },
     {
         "_id": "u102",
