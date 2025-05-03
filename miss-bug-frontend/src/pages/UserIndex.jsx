@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { userService } from "../services/user.service"
 import { UserList } from "../cmps/UserList"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service"
+import { bugService } from "../services/bug.service"
 
 export function UserIndex() {
     const [users, setUsers] = useState()
@@ -29,7 +30,7 @@ export function UserIndex() {
             const savedUser = await userService.save(newUser)
             setUsers(prevUsers => [...prevUsers, savedUser])
             showSuccessMsg("User Added")
-        } catch(err) {
+        } catch (err) {
             console.log("error on adding user: ", err)
             showErrorMsg("Cannot add user")
         }
@@ -41,8 +42,17 @@ export function UserIndex() {
             return
         }
 
+        const userOwnedBugs = await bugService.query({ creator: { _id: userId } })
+        if (userOwnedBugs.length !== 0) {
+            showErrorMsg("Cant delete user, they own bugs!")
+            return
+        }
+
         const confirmRemove = confirm("are you sure you want to remove this user?")
-        if (!confirmRemove) return
+        if (!confirmRemove) {
+            showErrorMsg("User removal canceled")
+            return
+        }
 
         try {
             await userService.remove(userId)
