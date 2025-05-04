@@ -21,15 +21,7 @@ export function BugIndex() {
         setBugs(bugs)
     }
 
-    async function onRemoveBug(bugId, bugCreatorId) {
-        const loggedInUserId = userService.getLoggedinUser()?._id
-        const isLoggedInUserAdmin = userService.isLoggedinUserAdmin()
-
-        if (loggedInUserId !== bugCreatorId && bugCreatorId !== "" && !isLoggedInUserAdmin) {
-            showErrorMsg('Only this bug\'s creator can remove it')
-            return
-        }
-
+    async function onRemoveBug(bugId) {
         try {
             await bugService.remove(bugId)
             console.log('Deleted Succesfully!')
@@ -65,15 +57,6 @@ export function BugIndex() {
     }
 
     async function onEditBug(bug) {
-        const loggedInUserId = userService.getLoggedinUser()?._id
-        const isLoggedInUserAdmin = userService.isLoggedinUserAdmin()
-
-
-        if (loggedInUserId !== bug.creator._id && bug.creator._id !== "" && !isLoggedInUserAdmin){
-            showErrorMsg('Only this bug\'s creator can update it')
-            return
-        }
-
         const severity = +prompt('New severity?')
         const bugToSave = { ...bug, severity }
         try {

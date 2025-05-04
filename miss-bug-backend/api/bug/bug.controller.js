@@ -46,7 +46,12 @@ export async function updateBug(req, res) {
         labels: req.body.labels,
         creator: req.body.creator
     }
+
+    const loggedInUser = req.loggedInUser
+
     try {
+        if (!loggedInUser?.isAdmin && bugToSave.creator._id !== loggedInUser?._id) throw "Unauthorized to update this bug"
+
         const savedBug = await bugsService.save(bugToSave)
         res.send(savedBug)
     } catch (err) {
@@ -75,11 +80,16 @@ export async function addBug(req, res) {
 
 export async function removeBug(req, res) {
     const { bugId } = req.params
+    const bug = await bugsService.getById(bugId)
+    const loggedInUser = req.loggedInUser
+
     try {
+        if (!loggedInUser?.isAdmin && bug.creator._id !== loggedInUser?._id) throw "Unauthorized to delete this bug"
+
         await bugsService.remove(bugId)
         res.send("OK")
     } catch (err) {
-        console.log(err)
+        console.log("err: ", err)
         res.status(400).send("couldnt remove bug")
     }
 }
