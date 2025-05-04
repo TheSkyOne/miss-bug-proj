@@ -41,37 +41,26 @@ async function remove(userId) {
     }
 }
 
-
-async function save(user) {
+async function save(userToSave) {
     try {
-        user._id = makeId()
-        user.score = 100
-        user.createdAt = Date.now()
-        if (!user.imgUrl) user.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-        users.push(user)
+        if (userToSave._id) {
+            const userIdx = users.findIndex(user => user._id === userToSave._id)
+            if (userIdx === -1) throw Error("Cant find user")
+            users[userIdx] = {...users[userIdx], ...userToSave}
+        } else {
+            userToSave._id = makeId()
+            userToSave.score = 100
+            userToSave.createdAt = Date.now()
+            if (!userToSave.imgUrl) userToSave.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+            users.push(userToSave)
+        }
+
         await _saveUsersToFile()
-        return user
+        return userToSave
     } catch (err) {
         throw err
     }
 }
-
-// async function save(userToSave) {
-//     try {
-//         if (userToSave._id) {
-//             const userIdx = users.findIndex(user => user._id === userToSave._id)
-//             if (userIdx === -1) throw Error("Cant find user")
-//             users[userIdx] = userToSave
-//         } else {
-//             userToSave._id = makeId()
-//             users.unshift(userToSave)
-//         }
-//         await saveUsersToFile()
-//         return userToSave
-//     } catch (err) {
-//         throw err
-//     }
-// }
 
 function getByUsername(username) {
     return users.find(user => user.username === username)

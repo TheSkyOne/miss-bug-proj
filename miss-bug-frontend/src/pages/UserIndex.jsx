@@ -37,11 +37,6 @@ export function UserIndex() {
     }
 
     async function onRemoveUser(userId) {
-        if (!userService.isLoggedinUserAdmin()) {
-            showErrorMsg("You must be an admin to do this action")
-            return
-        }
-
         const userOwnedBugs = await bugService.query({ creator: { _id: userId } })
         if (userOwnedBugs.length !== 0) {
             showErrorMsg("Cant delete user, they own bugs!")
@@ -65,11 +60,6 @@ export function UserIndex() {
     }
 
     async function onEditUser(user) {
-        if (!userService.isLoggedinUserAdmin()) {
-            showErrorMsg("You must be an admin to do this action")
-            return
-        }
-
         const fullname = prompt("enter new full name")
         const userToSave = { ...user, fullname }
         try {

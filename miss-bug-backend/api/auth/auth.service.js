@@ -6,6 +6,7 @@ const cryptr = new Cryptr(process.env.SECRET1 || "super-secret-password")
 
 export const authService = {
     getLoginToken,
+    validateToken,
     login,
     signup
 }
@@ -14,6 +15,17 @@ function getLoginToken(user) {
     const str = JSON.stringify(user)
     const encryptedStr = cryptr.encrypt(str)
     return encryptedStr
+}
+
+function validateToken(token) {
+    try {
+        const json = cryptr.decrypt(token)
+        const loggedinUser = JSON.parse(json)
+        return loggedinUser
+    } catch (err) {
+        console.log('Invalid login token')
+    }
+    return null
 }
 
 async function signup({ username, password, fullname }) {
