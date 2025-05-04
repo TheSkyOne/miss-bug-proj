@@ -2,7 +2,9 @@ import Axios from 'axios'
 
 const axios = Axios.create({ withCredentials: true })
 
-const BASE_URL = "http://127.0.0.1:3030/api/bug/"
+const BASE_URL = (process.env.NODE_ENV !== "development")
+    ? "/api/bug"
+    : "http://127.0.0.1:3030/api/bug/"
 
 export const bugService = {
     query,
@@ -15,7 +17,7 @@ export const bugService = {
 
 async function query(filterBy = {}) {
     try {
-        const { data: bugs } = await axios.get(BASE_URL, {params: filterBy})
+        const { data: bugs } = await axios.get(BASE_URL, { params: filterBy })
         return bugs
 
     } catch (err) {
@@ -48,7 +50,7 @@ async function save(bug) {
     const method = bug._id ? "put" : "post"
 
     try {
-        const {data: savedBug} = await axios[method](BASE_URL + (bug._id || ""), bug)
+        const { data: savedBug } = await axios[method](BASE_URL + (bug._id || ""), bug)
         return savedBug
     } catch (err) {
         console.log(err)
@@ -57,5 +59,5 @@ async function save(bug) {
 }
 
 function getDefaultFilter() {
-    return { title: "", severity: "", labels: []}
+    return { title: "", severity: "", labels: [] }
 }

@@ -4,7 +4,10 @@ const axios = Axios.create({ withCredentials: true })
 
 const STORAGE_KEY_LOGGEDIN_USER = "loggedinUser"
 
-const BASE_URL = "http://127.0.0.1:3030/api/"
+const BASE_URL = (process.env.NODE_ENV !== "development")
+    ? "/api/"
+    : "http://127.0.0.1:3030/api/"
+
 const BASE_USER_URL = BASE_URL + "user/"
 const BASE_AUTH_URL = BASE_URL + "auth/"
 
